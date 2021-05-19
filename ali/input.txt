@@ -1,0 +1,24 @@
+DEC decr        // Declarations
+DEC total
+DEC x
+DEC y
+LDI  -1           // Get the loop step
+STR  decr        // Store it in memory
+LDI  0             // Initialize running total
+STR  total        // Store total in memory
+LDI  6             // Load first operand to A
+STR  y             // Store it in memory 
+LDI  3             // Load second operand to A
+STR  x             // Store it in memory
+LDB  y             // Load first operand to B
+LDA total        // Load running total to A
+ADD               // Add A and B
+STR total        // Store sum in running total
+LDB  x            // Load second operand to B
+LDA decr        // Load the loop step to A
+ADD               // Add A and B
+JZS  22           // Zero result? Yes, we are done
+STR  x            // No, store second operand after decrement to memory
+JMP  12          // and go around loop again
+LDA total       // Put final total in A
+HLT
